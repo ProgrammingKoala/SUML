@@ -1,0 +1,5 @@
+parameter,values
+n_estimators,261
+max_depth,34
+min_samples_split,17
+min_samples_leaf,4
