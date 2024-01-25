@@ -15,7 +15,6 @@ def get_parm() -> tuple:
 	max_depth = df["values"][1],
 	min_samples_split = df["values"][2],
 	min_samples_leaf = df["values"][3]
-	print(n_estimators[0],max_depth[0],min_samples_split[0],min_samples_leaf)
 	return (n_estimators[0],max_depth[0],min_samples_split[0],min_samples_leaf)
 
 def get_dataframe() -> pd.DataFrame:
@@ -43,10 +42,13 @@ def get_fit_model() -> RandomForestRegressor:
 def test():
 	#input
 	#wheelbase,carlength,carwidth,carheight,curbweight,enginesize,boreratio,stroke,compressionratio,horsepower,peakrpm,citympg,highwaympg,gas,hardtop,hatchback,sedan,wagon,fwd,rwd,five,four,six,three,twelve,two
-	#expected pred = 13495.0
+	expected_pred = 13495.0
 	x = [[88.6,168.8,64.1,48.8,2548,130,3.47,2.68,9.0,111,5000,21,27,1,0,0,0,0,0,1,0,1,0,0,0,0]]
 	model = get_fit_model()
 	y_pred = model.predict(x)
-	print(y_pred)
+	print("Expected =",expected_pred)
+	print("Prediction =",y_pred[0])
 
-test()
+
+if __name__ == "__main__":
+	test()
