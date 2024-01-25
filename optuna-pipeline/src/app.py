@@ -51,7 +51,6 @@ st.divider()
 fuelType = st.selectbox('Fuel type:', (df['fueltype'].unique()))
 carbody = st.selectbox('Car body:', (df['carbody'].unique()))
 drivewheel = st.selectbox('Drivewheel:', (df['drivewheel'].unique()))
-#enginelocation = 'front'
 wheelbase = st.selectbox('Wheel base:', sorted((df['wheelbase'].unique())))
 carlength = st.selectbox('Length of the car:', sorted((df['carlength'].unique())), help='in inches')
 carwidth = st.selectbox('Width of the car:', sorted((df['carwidth'].unique())), help='in inches')
@@ -83,3 +82,4 @@ if st.button('Make prediction'):
 #car = st.selectbox('Car:', (df['CarName'].unique()))
 #aspiration = st.selectbox('Aspiration:', (df['aspiration'].unique()))
 #doornumber = st.selectbox('Number of doors:', (df['doornumber'].unique()))
+#enginelocation = 'front'
