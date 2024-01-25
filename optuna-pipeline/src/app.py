@@ -101,14 +101,6 @@ st.title('Prediction of Car Prices')
 
 st.divider()
 
-# --- SLIDERS
-#estimators = st.slider("Estimators", 50, 300)
-#max_depth = st.slider("Max Depth", 10, 50)
-#min_samples_split = st.slider("Min Samples Split", 2, 32)
-#min_samples_leaf = st.slider("Min Samples Leaf", 1, 32)
-
-st.divider()
-
 # --- SELECTBOXES FOR PARAMETERS NEEDED FOR PREDICTION
 fuelType = st.selectbox('Fuel type:', (df['fueltype'].unique()))
 carbody = st.selectbox('Car body:', (df['carbody'].unique()))
@@ -127,10 +119,6 @@ horsepower = st.selectbox('Horsepower:', sorted((df['horsepower'].unique())))
 peakrpm =  st.selectbox('Peak RPM:', sorted((df['peakrpm'].unique())), help='Revolutions per minute.')
 citympg = st.selectbox('City MPG:', sorted((df['citympg'].unique())), help='*City MPG:* the score a car will get on average in city conditions, with stopping and starting at lower speeds.')
 highwaympg = st.selectbox('Highway MPG:', sorted((df['highwaympg'].unique())), help='*Highway MPG:* the average a car will get while driving on an open stretch of road without stopping or starting, typically at a higher speed.')
-
-
-
-
 
 # -- MAKING PREDICTION 
 if st.button('Make prediction'):
@@ -151,12 +139,3 @@ if st.button('Make prediction'):
 
     st.divider() 
     st.success("Predicted price based on your input:  \n" + str(round(model_prediction[0], 3)) + "$")
-    
-
-# --- Not used but maybe used in future ---
-# --- !!! DELETE BEFORE TURNING IN !!!  ---
-#st.selectbox('', (df[''].unique()))   
-#car = st.selectbox('Car:', (df['CarName'].unique()))
-#aspiration = st.selectbox('Aspiration:', (df['aspiration'].unique()))
-#doornumber = st.selectbox('Number of doors:', (df['doornumber'].unique()))
-#enginelocation = 'front'
