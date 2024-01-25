@@ -18,7 +18,7 @@ st.write(df)
 st.divider()
 
 
-st.write("Jagoda Furmańczyk s22409    Dawid Kazubski s22722    Thanondrak Arunsangsirinak s22130")
+st.write("Jagoda Furmańczyk s22409, Dawid Kazubski s22722, Thanondrak Arunsangsirinak s22130")
 
 col1, mid, col2 = st.columns([1,1,20])
 with col1:
@@ -28,21 +28,36 @@ with col2:
 
 st.divider()
 
-st.slider("Estimators", 50, 300)
-st.slider("Max Depth", 10, 50)
-st.slider("Min Samples Split", 2, 32)
-st.slider("Min Samples Leaf", 1, 32)
+estimators = st.slider("Estimators", 50, 300)
+max_depth = st.slider("Max Depth", 10, 50)
+min_samples_split = st.slider("Min Samples Split", 2, 32)
+min_samples_leaf = st.slider("Min Samples Leaf", 1, 32)
 
 st.divider()
 
-car = st.selectbox('Car:', (df['CarName'].unique()))
+#car = st.selectbox('Car:', (df['CarName'].unique()))
+#aspiration = st.selectbox('Aspiration:', (df['aspiration'].unique()))
+#doornumber = st.selectbox('Number of doors:', (df['doornumber'].unique()))
 fuelType = st.selectbox('Fuel type:', (df['fueltype'].unique()))
-aspiration = st.selectbox('Aspiration:', (df['aspiration'].unique()))
-doornumber = st.selectbox('Number of doors:', (df['doornumber'].unique()))
 carbody = st.selectbox('Car body:', (df['carbody'].unique()))
 drivewheel = st.selectbox('Drivewheel:', (df['drivewheel'].unique()))
-enginelocation = 'front'
+#enginelocation = 'front'
 wheelbase = st.selectbox('Wheel base:', (df['wheelbase'].unique()))
-carlength = st.selectbox('Length of the car:', (df['carlength'].unique()))
+carlength = st.selectbox('Length of the car:', (df['carlength'].unique()), help='in inches')
+carwidth = st.selectbox('Width of the car:', (df['carwidth'].unique()), help='in inches')
+carheight = st.selectbox('Height of the car:', (df['carheight'].unique()), help='in inches')
+curbweight = st.selectbox('Weight of the curb:', (df['curbweight'].unique()))
+enginesize = st.selectbox('Size of engine', (df['enginesize'].unique()))
+cylindernumber = st.selectbox('Number of cylinders', (df['cylindernumber'].unique()))
+boreratio = st.selectbox('Bore ratio:', (df['boreratio'].unique()))
+stroke = st.selectbox('Stroke:', (df['stroke'].unique()))
+compressionratio = st.selectbox('Compression ratio', (df['compressionratio'].unique()), help='The compression ratio is defined as the ratio between the volume of the cylinder with the piston in the bottom position, Vbottom (largest volume), and in the top position, Vtop (smallest volume).')
+horsepower = st.selectbox('Horsepower:', (df['horsepower'].unique()))
+peakrpm =  st.selectbox('Peak RPM:', (df['peakrpm'].unique()), help='Revolutions per minute.')
+citympg = st.selectbox('City MPG:', (df['citympg'].unique()), help='*City MPG:* the score a car will get on average in city conditions, with stopping and starting at lower speeds.')
+highwaympg = st.selectbox('Highway MPG:', (df['highwaympg'].unique()), help='*Highway MPG:* the average a car will get while driving on an open stretch of road without stopping or starting, typically at a higher speed.')
 #st.selectbox('', (df[''].unique()))
 
+if st.button('Make prediction'):
+    dfp = pd.DataFrame(fuelType, carbody, drivewheel)
+    dfp.to_csv('predictionData')
