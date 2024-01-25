@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import time
 
 st.set_page_config(
     page_title="Prediction of Car Prices",
@@ -42,22 +43,26 @@ fuelType = st.selectbox('Fuel type:', (df['fueltype'].unique()))
 carbody = st.selectbox('Car body:', (df['carbody'].unique()))
 drivewheel = st.selectbox('Drivewheel:', (df['drivewheel'].unique()))
 #enginelocation = 'front'
-wheelbase = st.selectbox('Wheel base:', (df['wheelbase'].unique()))
-carlength = st.selectbox('Length of the car:', (df['carlength'].unique()), help='in inches')
-carwidth = st.selectbox('Width of the car:', (df['carwidth'].unique()), help='in inches')
-carheight = st.selectbox('Height of the car:', (df['carheight'].unique()), help='in inches')
-curbweight = st.selectbox('Weight of the curb:', (df['curbweight'].unique()))
-enginesize = st.selectbox('Size of engine', (df['enginesize'].unique()))
+wheelbase = st.selectbox('Wheel base:', sorted((df['wheelbase'].unique())))
+carlength = st.selectbox('Length of the car:', sorted((df['carlength'].unique())), help='in inches')
+carwidth = st.selectbox('Width of the car:', sorted((df['carwidth'].unique())), help='in inches')
+carheight = st.selectbox('Height of the car:', sorted((df['carheight'].unique())), help='in inches')
+curbweight = st.selectbox('Weight of the curb:', sorted((df['curbweight'].unique())))
+enginesize = st.selectbox('Size of engine', sorted((df['enginesize'].unique())))
 cylindernumber = st.selectbox('Number of cylinders', (df['cylindernumber'].unique()))
-boreratio = st.selectbox('Bore ratio:', (df['boreratio'].unique()))
-stroke = st.selectbox('Stroke:', (df['stroke'].unique()))
-compressionratio = st.selectbox('Compression ratio', (df['compressionratio'].unique()), help='The compression ratio is defined as the ratio between the volume of the cylinder with the piston in the bottom position, Vbottom (largest volume), and in the top position, Vtop (smallest volume).')
-horsepower = st.selectbox('Horsepower:', (df['horsepower'].unique()))
-peakrpm =  st.selectbox('Peak RPM:', (df['peakrpm'].unique()), help='Revolutions per minute.')
-citympg = st.selectbox('City MPG:', (df['citympg'].unique()), help='*City MPG:* the score a car will get on average in city conditions, with stopping and starting at lower speeds.')
-highwaympg = st.selectbox('Highway MPG:', (df['highwaympg'].unique()), help='*Highway MPG:* the average a car will get while driving on an open stretch of road without stopping or starting, typically at a higher speed.')
+boreratio = st.selectbox('Bore ratio:', sorted((df['boreratio'].unique())))
+stroke = st.selectbox('Stroke:', sorted((df['stroke'].unique())))
+compressionratio = st.selectbox('Compression ratio', sorted((df['compressionratio'].unique())), help='The compression ratio is defined as the ratio between the volume of the cylinder with the piston in the bottom position, Vbottom (largest volume), and in the top position, Vtop (smallest volume).')
+horsepower = st.selectbox('Horsepower:', sorted((df['horsepower'].unique())))
+peakrpm =  st.selectbox('Peak RPM:', sorted((df['peakrpm'].unique())), help='Revolutions per minute.')
+citympg = st.selectbox('City MPG:', sorted((df['citympg'].unique())), help='*City MPG:* the score a car will get on average in city conditions, with stopping and starting at lower speeds.')
+highwaympg = st.selectbox('Highway MPG:', sorted((df['highwaympg'].unique())), help='*Highway MPG:* the average a car will get while driving on an open stretch of road without stopping or starting, typically at a higher speed.')
 #st.selectbox('', (df[''].unique()))
 
 if st.button('Make prediction'):
-    dfp = pd.DataFrame(fuelType, carbody, drivewheel)
-    dfp.to_csv('predictionData')
+    with st.spinner('Wait for it...'):
+        time.sleep(5)
+    st.divider()
+    st.success('Done!' + str(estimators))
+    #dfp = pd.DataFrame(fuelType, carbody, drivewheel)
+    #dfp.to_csv('predictionData')
