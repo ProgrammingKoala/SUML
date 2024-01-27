@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -78,8 +79,12 @@ st.set_page_config(
     }
 )
 
+# --- Loading paths for datasets and model
+carPricePath = Path(__file__).parents[1] / 'data/01_raw/CarPrice.csv'
+modelPath = Path(__file__).parents[1] / 'data/07_model_output/rfr_model.pickle'
+
 # --- LOADING OF DATA
-df = pd.read_csv("../data/01_raw/CarPrice.csv")
+df = pd.read_csv(carPricePath)
 
 # --- DYSPLAING DATA WHEN CHECKBOX IS TICKED
 csv = convert_df(df)
@@ -94,7 +99,7 @@ st.divider()
 
 # --- 'MAIN PAGE' code
 st.write("Jagoda Furmańczyk s22409, Dawid Kazubski s22722, Thanondrak Arunsangsirinak s22130")
-st.image('https://lh3.googleusercontent.com/proxy/Z1RdJVwT2tVCHUZwMfocw4Hv0HFT4x3p6TgeTeStNTwNTMGRkJsKt_kR9MfqBY5WKI0E9aGGE2GFDyZGfCZ3Xk7mxAT1IjBp_Cn3')
+st.image('pjatkLogo.png')
 st.title('Prediction of Car Prices')
 
 st.divider()
@@ -102,7 +107,7 @@ st.divider()
 # --- SELECTBOXES FOR PARAMETERS NEEDED FOR PREDICTION
 fuelType = st.selectbox('Fuel type:', (df['fueltype'].unique()))
 carbody = st.selectbox('Car body:', (df['carbody'].unique()))
-drivewheel = st.selectbox('Drivewheel:', (df['drivewheel'].unique()))
+drivewheel = st.selectbox('Drive wheel:', (df['drivewheel'].unique()))
 wheelbase = st.selectbox('Wheel base:', sorted((df['wheelbase'].unique())))
 carlength = st.selectbox('Length of the car:', sorted((df['carlength'].unique())), help='in inches')
 carwidth = st.selectbox('Width of the car:', sorted((df['carwidth'].unique())), help='in inches')
@@ -132,7 +137,7 @@ if st.button('Make prediction'):
         final_array_user_input = [array_user_input + array_gas + array_carbody + array_drivewheel + array_cylindernumber]
         
         #PREDICTING THE CAR PRICE BASED ON MODEL
-        pickled_model = pickle.load(open('../data/07_model_output/rfr_model.pickle', 'rb'))
+        pickled_model = pickle.load(open(modelPath, 'rb'))
         model_prediction = pickled_model.predict(final_array_user_input)
 
     st.divider() 
