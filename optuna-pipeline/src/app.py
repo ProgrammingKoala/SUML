@@ -6,7 +6,7 @@ import time
 import pickle
 from package.path import *
 
-st.write(getPath())
+st.write(getPath("optuna-pipeline"))
 @st.cache_data
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
