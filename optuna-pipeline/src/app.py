@@ -82,7 +82,6 @@ st.set_page_config(
 # --- Loading paths for datasets and model
 carPricePath = Path(__file__).parents[1] / 'data/01_raw/CarPrice.csv'
 modelPath = Path(__file__).parents[1] / 'data/07_model_output/rfr_model.pickle'
-imagePath = Path(__file__) / 'pjatkLogo.png'
 
 # --- LOADING OF DATA
 df = pd.read_csv(carPricePath)
@@ -100,7 +99,7 @@ st.divider()
 
 # --- 'MAIN PAGE' code
 st.write("Jagoda Furmańczyk s22409, Dawid Kazubski s22722, Thanondrak Arunsangsirinak s22130")
-st.image(imagePath)
+st.image("pjatkLogo.png")
 st.title('Prediction of Car Prices')
 
 st.divider()
