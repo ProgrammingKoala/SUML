@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np
 import time
 import pickle
+from package.path import *
 
+st.write(getPath())
 @st.cache_data
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
