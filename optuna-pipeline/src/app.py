@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import time
 import pickle
-from package.path import *
 
 @st.cache_data
 def convert_df(df):
@@ -100,7 +99,7 @@ st.divider()
 
 # --- 'MAIN PAGE' code
 st.write("Jagoda Furmańczyk s22409, Dawid Kazubski s22722, Thanondrak Arunsangsirinak s22130")
-st.image(getPath("optuna-pipeline","src/pjatkLogo.png"))
+st.image("pjatkLogo.png")
 st.title('Prediction of Car Prices')
 
 st.divider()
